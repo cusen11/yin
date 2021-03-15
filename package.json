@@ -50,6 +50,7 @@
     "gulp-zip": "^5.0.1",
     "imagemin-jpeg-recompress": "^6.0.0",
     "imagemin-pngquant": "^8.0.0",
+    "merge-stream": "^2.0.0",
     "minimist": "^1.2.0"
   },
   "dependencies": {

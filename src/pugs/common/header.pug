@@ -1,0 +1,11 @@
+.header
+    .header__top
+        p テレビショッピング・ラジオショッピング・カタログ通販の日本直販
+        -
+            var list = ['サイトマップ','お問い合わせ','ご利用ガイド','返品について']
+        ul
+            each item in list
+                li= item
+        .search
+            input(type="text" description="サイト内検索")
+            img(src="./common/images/search-icon.png", alt="")

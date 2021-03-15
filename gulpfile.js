@@ -18,8 +18,8 @@ let gulp = require('gulp'),
     gulpHtmlmin = require('gulp-htmlmin'),
     imageminPngquant = require('imagemin-pngquant'),
     imageminJpegRecompress = require('imagemin-jpeg-recompress'),
-    gulpZip = require('gulp-zip');
-
+    gulpZip = require('gulp-zip'); 
+    merge = require('merge-stream');
 // Set the options for sass compiler 
 const SASS_OPTIONS = require('./config/sass-options').default;
 
@@ -44,29 +44,63 @@ let options = argv(process.argv.slice(2), knownOptions),
     project = options.project,
     baseDir = mode === 'development' ? 'dev' : 'build';
 
-// Task for compile & minify the main sass file
-gulp.task('sass', function() {
-    return gulp.src([
-            './node_modules/bootstrap/scss/bootstrap.scss',
-            './node_modules/@fortawesome/fontawesome-free/css/all.css',
-            './node_modules/owl.carousel/dist/assets/owl.carousel.min.css',
-            './src/sass/main.scss'
-        ])
-        // Compile sass file
-        .pipe(sass(SASS_OPTIONS))
-        // Autoprefix css for cross browser compatibility
-        .pipe(autoprefixer())
-        // Minify the css files
-        .pipe(gulpif(mode === 'production', csso()))
-        // Ouptut css
-        .pipe(gulp.dest(`./${baseDir}/assets/css`))
-        .pipe(gulpif(mode === 'development', browserSync.stream()));
-});
 
+// Task for compile & minify the main sass file
+gulp.task('sass', function() { 
+    var index = gulp.src([
+                './src/pugs/css/top.scss'
+            ])
+            // Compile sass file
+            .pipe(sass(SASS_OPTIONS))
+            // Autoprefix css for cross browser compatibility
+            .pipe(autoprefixer())
+            // Minify the css files
+            .pipe(gulpif(mode === 'production', csso()))
+            // Ouptut css
+            .pipe(gulp.dest(`./${baseDir}/css`))
+            .pipe(gulpif(mode === 'development', browserSync.stream()));
+    var common = gulp.src([
+                './src/pugs/category/css/category.scss'
+            ])
+            // Compile sass file
+            .pipe(sass(SASS_OPTIONS))
+            // Autoprefix css for cross browser compatibility
+            .pipe(autoprefixer())
+            // Minify the css files
+            .pipe(gulpif(mode === 'production', csso()))
+            // Ouptut css
+            .pipe(gulp.dest(`./${baseDir}/category/css`))
+            .pipe(gulpif(mode === 'development', browserSync.stream()));
+    var category = gulp.src([
+                './src/pugs/common/css/common.scss'
+            ])
+            // Compile sass file
+            .pipe(sass(SASS_OPTIONS))
+            // Autoprefix css for cross browser compatibility
+            .pipe(autoprefixer())
+            // Minify the css files
+            .pipe(gulpif(mode === 'production', csso()))
+            // Ouptut css
+            .pipe(gulp.dest(`./${baseDir}/common/css`))
+            .pipe(gulpif(mode === 'development', browserSync.stream()));
+    var detail = gulp.src([
+                './src/pugs/detail/css/detail.scss'
+            ])
+            // Compile sass file
+            .pipe(sass(SASS_OPTIONS))
+            // Autoprefix css for cross browser compatibility
+            .pipe(autoprefixer())
+            // Minify the css files
+            .pipe(gulpif(mode === 'production', csso()))
+            // Ouptut css
+            .pipe(gulp.dest(`./${baseDir}/detail/css`))
+            .pipe(gulpif(mode === 'development', browserSync.stream()));
+    return merge(index, common, category,detail)
+}); 
 // Task for compress & minify the image files
 gulp.task('imgs', function() {
-    return gulp.src([
-            './src/assets/imgs/**/*'
+    var index =  gulp.src([
+            './src/pugs/images/*'
         ])
         // Compress & minify the image files
         .pipe(gulpif(mode === 'production', gulpImagemin([
@@ -78,37 +112,79 @@ gulp.task('imgs', function() {
             imageminJpegRecompress(),
         ])))
         // Ouptut css
-        .pipe(gulp.dest(`./${baseDir}/assets/imgs`))
+        .pipe(gulp.dest(`./${baseDir}/images`))
         .pipe(gulpif(mode === 'development', browserSync.stream()));
+
+    var common =  gulp.src([
+            './src/pugs/common/images/*'
+        ])
+        // Compress & minify the image files
+        .pipe(gulpif(mode === 'production', gulpImagemin([
+            gulpImagemin.gifsicle(),
+            gulpImagemin.jpegtran(),
+            gulpImagemin.optipng(),
+            gulpImagemin.svgo(),
+            imageminPngquant(),
+            imageminJpegRecompress(),
+        ])))
+        // Ouptut css
+        .pipe(gulp.dest(`./${baseDir}/common/images`))
+        .pipe(gulpif(mode === 'development', browserSync.stream()));
+    var category =  gulp.src([
+            './src/pugs/category/images/*'
+        ])
+        // Compress & minify the image files
+        .pipe(gulpif(mode === 'production', gulpImagemin([
+            gulpImagemin.gifsicle(),
+            gulpImagemin.jpegtran(),
+            gulpImagemin.optipng(),
+            gulpImagemin.svgo(),
+            imageminPngquant(),
+            imageminJpegRecompress(),
+        ])))
+        // Ouptut css
+        .pipe(gulp.dest(`./${baseDir}/category/images`))
+        .pipe(gulpif(mode === 'development', browserSync.stream()));
+    var detail =  gulp.src([
+            './src/pugs/detail/images/*'
+        ])
+        // Compress & minify the image files
+        .pipe(gulpif(mode === 'production', gulpImagemin([
+            gulpImagemin.gifsicle(),
+            gulpImagemin.jpegtran(),
+            gulpImagemin.optipng(),
+            gulpImagemin.svgo(),
+            imageminPngquant(),
+            imageminJpegRecompress(),
+        ])))
+        // Ouptut css
+        .pipe(gulp.dest(`./${baseDir}/detail/images`))
+        .pipe(gulpif(mode === 'development', browserSync.stream()));
+    var products =  gulp.src([
+            './src/pugs/products/*'
+        ])
+        // Compress & minify the image files
+        .pipe(gulpif(mode === 'production', gulpImagemin([
+            gulpImagemin.gifsicle(),
+            gulpImagemin.jpegtran(),
+            gulpImagemin.optipng(),
+            gulpImagemin.svgo(),
+            imageminPngquant(),
+            imageminJpegRecompress(),
+        ])))
+        // Ouptut css
+        .pipe(gulp.dest(`./${baseDir}/products`))
+        .pipe(gulpif(mode === 'development', browserSync.stream()));
+    return merge(index,common,category,detail,products)
 });
 
 // Move the javascript files into our /src/js folder
-gulp.task('js', function() {
-    gulp.src([
-            './src/data/**/*.js',
-            './src/scripts/functions/*.js',
-            './src/scripts/**/*.js',
-            './src/scripts/*.js'
-        ])
-        // Concat all file
-        .pipe(concat(`main.js`))
-        // Babel compiler
-        .pipe(babel({
-            presets: ['@babel/env']
-        }))
-        // Minify the js files        
-        .pipe(gulpif(mode === 'production', uglify()))
-        // Output js
-        .pipe(gulp.dest(`./${baseDir}/assets/js/`))
-        .pipe(gulpif(mode === 'development', browserSync.stream()));
-
-    return gulp.src([
-            'node_modules/bootstrap/dist/js/bootstrap.bundle.min.js',
-            'node_modules/jquery/dist/jquery.min.js',
-            'node_modules/owl.carousel/dist/owl.carousel.min.js'
+gulp.task('js', function() { 
+    return gulp.src([ 
+            './src/pugs/common/js/*.js'
         ])
         // Output js
-        .pipe(gulp.dest(`./${baseDir}/assets/js`));
+        .pipe(gulp.dest(`./${baseDir}/common/js`));
 });
 
 // Check javascript syntax with ESLint
@@ -132,25 +208,40 @@ gulp.task('eslint', function() {
         .pipe(eslint.failAfterError());
 });
 
-// Task for compile the pug files
 gulp.task('pug', function() {
-    return gulp.src('./src/pugs/*.pug')
-        // Compile pug file
-        .pipe(pug({
-            pretty: true
-        }))
-        .pipe(htmlbeautify(HTML_BEAUTIFY_OPTIONS))
-        .pipe(gulp.dest(`./${baseDir}`));
+   
+    var index = gulp.src('./src/pugs/*.pug')
+                // Compile pug file
+                .pipe(pug({
+                    pretty: true
+                }))
+                .pipe(htmlbeautify(HTML_BEAUTIFY_OPTIONS))
+                .pipe(gulp.dest(`./${baseDir}`));
+    var category = gulp.src('./src/pugs/category/*.pug')
+                // Compile pug file
+                .pipe(pug({
+                    pretty: true
+                }))
+                .pipe(htmlbeautify(HTML_BEAUTIFY_OPTIONS))
+                .pipe(gulp.dest(`./${baseDir}/category`));
+    var detail = gulp.src('./src/pugs/detail/*.pug')
+                // Compile pug file
+                .pipe(pug({
+                    pretty: true
+                }))
+                .pipe(htmlbeautify(HTML_BEAUTIFY_OPTIONS))
+                .pipe(gulp.dest(`./${baseDir}/detail`));
+    return merge(index, category, detail)
 });
-
+ 
 // Prepare build - Task copy the assets folder to build 
 gulp.task('cp-assets-folder', function() {
     return gulp.src([
-            './src/assets/**/*',
-            '!./src/assets/imgs/**/*'
+            './src/pugs/common/images/*'
         ])
-        .pipe(gulp.dest(`./${baseDir}/assets`));
+        .pipe(gulp.dest(`./${baseDir}/common/images`));
 });
+
 
 // Prepare build - Create a now.json file
 gulp.task('cr-now-json', function() {
@@ -217,13 +308,18 @@ gulp.task('serve', gulp.series(...basicTasks, function() {
     browserSync.init({
         server: `./${baseDir}`,
         port: port
-    });
+    }); 
+    gulp.watch('./src/css/**/*', gulp.series('sass'));
 
-    gulp.watch('./src/sass/**/*', gulp.series('sass'));
-    gulp.watch(['./src/scripts/**/*'], gulp.series('eslint', 'js'));
-    gulp.watch('./src/pugs/**/*', gulp.series('pug'));
-    gulp.watch('./src/assets/imgs/**/*', gulp.series('imgs'));
-    gulp.watch(['./src/assets/**/*', '!./src/assets/imgs/**/*'], gulp.series('cp-assets-folder'));
+    gulp.watch(['./src/common/*'], gulp.series('js'));
+
+    gulp.watch('./src/pugs/**/*', gulp.series('pug')); 
+
+    gulp.watch('./src/**/*', gulp.series('imgs')); 
+    gulp.watch('./src/*', gulp.series('imgs')); 
+
+    gulp.watch(['/src/pugs/common/images/*'], gulp.series('cp-assets-folder'));
+
     gulp.watch('./dev/**/*').on('change', browserSync.reload);
 }));
 

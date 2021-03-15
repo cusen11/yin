@@ -1,7 +1,14 @@
-extends ./parts/layout.pug
-
-prepend meta
-    title Namtech - Home
+doctype html
+html(lang="en")
+    head
+        meta(charset="UTF-8")
+        meta(http-equiv="X-UA-Compatible", content="IE=edge")
+        meta(name="viewport", content="width=device-width, initial-scale=1.0")
+        meta(name="keywords", content="")
+        meta(name="description", content="")
+        title Home Page
+        link(rel="stylesheet", href="css/top.scss")
+    body 
+        include common/header.pug
     
-block main-wrapper
-    include ./parts/includes/homePage.pug
+    script(src="./common/js/abc.js") 
