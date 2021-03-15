@@ -1,0 +1,49 @@
+extends ./parts/layout.pug
+
+prepend meta
+    title Namtech - blog
+    
+block main-wrapper
+    h1(style="display:none") Namtech - blog
+    .blog.wrapper-child
+        .top-acticle
+            .img
+                img(src="./assets/imgs/blog-1.jpg", alt="")
+            .content
+                .content__hero
+                    h3 Title of Article
+                    p A local doctor will assess you and if appropriate, prescribe a prescription plan. A local doctor will assess you and if appropriate, prescribe a prescription plan.
+                    a(href="blog-acticle.html").btn read more
+        .main
+            .main__nav
+                ul
+                    li
+                        a(href="#") NEWS
+                    li
+                        a(href="#") RESOURCES 
+                    li
+                        a(href="#") OTHER 
+                    li
+                        a(href="#") OTHER 
+            .main__acticle
+                -for(i=2;i<8;i++)
+               
+                    .acticle-item
+                        .img
+                            img(src=`./assets/imgs/blog-${i}.jpg`, alt="")
+                            p new
+                        .content
+                            .content__hero
+                                h3 Title of Article
+                                p A local doctor will assess you and if appropriate, prescribe a prescription plan. A local doctor will assess you and if appropriate, prescribe a prescription plan.
+                                a(href="blog-acticle.html").btn read more
+            
+            .loadmore
+                a(href="#")
+                    img(src="./assets/imgs/icon/loadmore.svg", alt="")
+        .ques
+            .content
+                h3 Questions?<br/> Meet answers.
+                p You deserve the truth. Our medical specialists rolled up their sleeves, diving deep into the science to dig up everything you need to know about your fertility.
+            img(src="./assets/imgs/blog-q.png", alt="")
+

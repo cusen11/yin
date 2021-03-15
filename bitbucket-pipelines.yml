@@ -1,0 +1,18 @@
+# This is a sample build configuration for JavaScript.
+# Check our guides at https://confluence.atlassian.com/x/14UWN for more examples.
+# Only use spaces to indent your .yml configuration.
+# -----
+# You can specify a custom docker image from Docker Hub as your build environment.
+image: hungnguyen90hp/node-rsync:1.0
+
+pipelines:
+  branches:
+    master:
+      - step:
+          name: Deploy staging
+          caches:
+            - node
+          script: # Modify the commands below to build your repository.
+            - npm install
+            - npm run build
+            - rsync -avzP ./build/* $USER_STAGING@$ADDRESS_STAGING:$FOLDER_DEPLOY

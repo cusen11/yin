@@ -1,0 +1,23 @@
+/* 
+ *  Theme variables 
+ */
+$text-color: #F0F0F0;
+$green:#5CFC61;
+$pink: #E303F7;
+
+
+/* 
+ *  Fonts define 
+ */
+@font-face {
+    font-family: 'Good Sans';
+    src: url('../fonts/GOODSANS/GoodSans-Regular.eot');
+    src: url('../fonts/GOODSANS/GoodSans-Regular.eot?#iefix') format('embedded-opentype'),
+        url('../fonts/GOODSANS/GoodSans-Regular.woff2') format('woff2'),
+        url('../fonts/GOODSANS/GoodSans-Regular.woff') format('woff'),
+        url('../fonts/GOODSANS/GoodSans-Regular.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
+

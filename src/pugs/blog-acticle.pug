@@ -1,0 +1,36 @@
+extends ./parts/layout.pug
+
+prepend meta
+    title Namtech - blog acticle
+    
+block main-wrapper
+    h1(style="display:none") Namtech - blog acticle
+    .blog-acticle.wrapper-child
+        .hero-acticle.p80
+            .img
+                img(src=`./assets/imgs/hero-blog-acticle.jpg`, alt="")
+            .content
+                .content__hero
+                    h3 Title of Article
+                    p A local doctor will assess you and if appropriate, prescribe a prescription plan. A local doctor will assess you and if appropriate, prescribe a prescription plan.
+        .main-acticle.p80
+            p.text-content There’s a stigma attached to women’s reproductive health. Issues around fertility, contraception, pregnancy complications, and pain can be pretty uncomfortable to talk about. Unfortunately, this keeps many of us silent. At Kin, we’re equipping women to take control of our fertility health and become advocates for our own bodies. Kin provides trusted information to inform decision making, and better access to the healthcare system for a simpler fertility journey.There’s a stigma attached to women’s reproductive health. Issues around fertility, contraception, pregnancy complications, and pain can be pretty uncomfortable to talk about. Unfortunately, this keeps many of us silent.At Kin, we’re equipping women to take control of our fertility health and become advocates for our own bodies. Kin provides trusted information to inform decision making, and better access to the healthcare system for a simpler fertility journey.There’s a stigma attached to women’s reproductive health. Issues around fertility, contraception, pregnancy complications, and pain can be pretty uncomfortable to talk about. Unfortunately, this keeps many of us silent.
+            img(src=`./assets/imgs/blog-1.jpg`, alt="")
+            img(src=`./assets/imgs/blog-1.jpg`, alt="")
+            p.text-content There’s a stigma attached to women’s reproductive health. Issues around fertility, contraception, pregnancy complications, and pain can be pretty uncomfortable to talk about. Unfortunately, this keeps many of us silent. At Kin, we’re equipping women to take control of our fertility health and become advocates for our own bodies. Kin provides trusted information to inform decision making, and better access to the healthcare system for a simpler fertility journey.There’s a stigma attached to women’s reproductive health. Issues around fertility, contraception, pregnancy complications, and pain can be pretty uncomfortable to talk about. Unfortunately, this keeps many of us silent.At Kin, we’re equipping women to take control of our fertility health and become advocates for our own bodies. Kin provides trusted information to inform decision making, and better access to the healthcare system for a simpler fertility journey.There’s a stigma attached to women’s reproductive health. Issues around fertility, contraception, pregnancy complications, and pain can be pretty uncomfortable to talk about. Unfortunately, this keeps many of us silent.
+        .share
+            a(href="#")
+                img(src="./assets/imgs/icon/share.svg", alt="")
+        .child-hero
+            img(src="./assets/imgs/relate-acticle.jpg", alt="")
+        .reate-acticle.p80
+            -for(i=4;i<6;i++)
+                .acticle-item
+                            .img
+                                img(src=`./assets/imgs/blog-${i}.jpg`, alt="")
+                                p new
+                            .content
+                                .content__hero
+                                    h3 Title of Article
+                                    p A local doctor will assess you and if appropriate, prescribe a prescription plan. A local doctor will assess you and if appropriate, prescribe a prescription plan.
+                                    a(href="blog-acticle.html").btn read more

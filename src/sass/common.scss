@@ -1,0 +1,155 @@
+/*
+ *  Reset
+ */
+ *{
+     margin: 0;
+     padding: 0;
+     box-sizing: border-box;
+ }
+ .btn{
+    background-color:$green;
+    color:$pink;
+    font-size: 16px;
+    padding:10px 20px;
+    text-transform: uppercase;
+    text-decoration: none;
+    &:hover{
+        color:white !important;
+    }
+}
+body {
+    color: $text-color;
+    overflow-x: hidden;
+    font-family: Good Sans, sans-serif;
+    height: 1000px;
+   // font-family: 'Rational', sans-serif;
+}
+
+[class*=wrapper-child] {
+    max-width: 1920px;
+    margin: 0 auto;
+    width: 100%;
+}
+
+ul {
+    padding: 0;
+
+    li {
+        list-style: none;
+      
+    }
+}
+
+a {
+
+    transition: all .5s ease;
+
+}
+marquee{
+    font-size: 45px;
+    color: $pink;
+    background-color: white;
+    font-style: italic;
+    letter-spacing: 1.5px;
+    line-height: 50px;
+    padding:40px 0;
+}
+/*
+ *  Common class
+ */
+ .p80{
+     padding:40px 80px;
+     @include respond-to(768){
+         padding:20px 30px;
+     }
+ }
+.h300{
+    min-height: 300px;
+    @include respond-to(768){
+        min-height: 100px;
+    }
+}
+
+.dflex {
+    display: flex;
+
+    &--default {
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+    }
+
+    &--col {
+        flex-direction: column;
+    }
+}
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
+}
+
+@keyframes slideUp {
+    from {
+        transform: translateY(1rem);
+    }
+
+    to {
+        transform: translateY(0);
+    }
+}
+
+@keyframes bounceUp {
+    from {
+        transform: translateY(0);
+    }
+
+    25% {
+        transform: translateY(-.65rem);
+    }
+
+    50% {
+        transform: translateY(2.5rem);
+    }
+
+    to {
+        transform: translateY(0);
+    }
+}
+
+.fade {
+    &--in {
+        animation-name: fadeIn;
+        animation-duration: 1.5s;
+    }
+}
+
+.slide {
+    &--up {
+        animation-name: slideUp, fadeIn;
+        animation-duration: 1s, 1.5s;
+    }
+}
+
+.bounce {
+    &--up {
+        animation-name: bounceUp;
+        animation-duration: 1.5s;
+    }
+}
+
+@mixin logo--special($st, $ft) {
+    animation-name: slideUp, fadeIn;
+    animation-timing-function: ease, ease;
+    animation-duration: $st, $ft;
+}
+
+@mixin slide--up($st, $ft) {
+    animation-name: slideUp, fadeIn;
+    animation-duration: $st, $ft;
+    animation-timing-function: ease, ease;
+}

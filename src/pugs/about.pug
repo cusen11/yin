@@ -1,0 +1,45 @@
+extends ./parts/layout.pug
+
+prepend meta
+    title Namtech - about
+    
+block main-wrapper
+    h1(style="display:none") Namtech - about
+    .about.wrapper-child
+        .hero-top
+            img(src="./assets/imgs/hero-about.jpg", alt="")
+
+            .content
+                img(src="./assets/imgs/icon/icon-hero-about.svg", alt="")
+                h2 We exist to raise the standards for women’s fertility health
+                p Women’s roles in society have been changing for decades—they still are. We’re leaders, we’re career-women, we’re more educated, we’re paid more, and we have less time. We think modern women deserve better access to quality health information and healthcare that fits into our changing needs and lifestyles.
+                p So we’re building Kin. A simple way for Australian women to get the info they need to make empowered choices about their reproductive health. It’s healthcare on our terms.
+        .about__main
+            .ss1
+                h2 Why we built Yin — To start the conversation around a healthy sex life  and provide easy access to birth control pills. Stigma be gone. 
+                    span Taboo no more.
+            .ss2
+                .img
+                    img(src="./assets/imgs/about-ss2.png", alt="")
+                .content
+                    h2 We exist to raise the standards for women’s fertility health
+                    p Women’s roles in society have been changing for decades—they still are. We’re leaders, we’re career-women, we’re more educated, we’re paid more, and we have less time. We think modern women deserve better access to quality health information and healthcare that fits into our changing needs and lifestyles.
+                    p So we’re building Kin. A simple way for Australian women to get the info they need to make empowered choices about their reproductive health. It’s healthcare on our terms.
+            .child-hero
+                img(src="./assets/imgs/relate-acticle.jpg", alt="")
+            .ss3 
+                .works
+                    - for(i=1;i<4;i++)
+                        .content
+                            .content__item
+                                img(src=`assets/imgs/icon/icon${i}.svg`, alt="")
+                                h2 The Kin Fertility Test
+                                We are soon to launch a women’s fertility pathology test. It will give personalised information about your fertility hormones, whether you’re thinking of kids now, never, or way down the track.
+            .ss4
+                .img
+                    
+                    img(src="./assets/imgs/about-ss4.jpg", alt="")
+                .content
+                    h2 Oh hey, it's us!
+                    p The contraceptive pill delivered to your door. Yin lets you ditch the in-person doctor’s appointment, without compromising quality healthcare.
+                    p Life is full of loop-the-loops. But, access to your contraception should be straightforward.            

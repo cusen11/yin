@@ -1,0 +1,25 @@
+.why{
+    position: relative;
+    display: flex;
+    align-items:flex-end;
+    flex-wrap: wrap;
+    *{
+        color:$pink
+    }
+    .content{
+        padding:10px;
+        text-align: center;
+        margin-bottom: 20px;
+        img{
+            margin-bottom: 15px;
+        }
+        @include respond-to(700){
+            width: 33%;
+
+        }
+        @include respond-toSP(700){
+            width: 20%;
+
+        }
+    }
+}
