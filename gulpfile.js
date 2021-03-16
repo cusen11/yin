@@ -309,18 +309,13 @@ gulp.task('serve', gulp.series(...basicTasks, function() {
         server: `./${baseDir}`,
         port: port
     }); 
-    gulp.watch('./src/css/**/*', gulp.series('sass'));
-
-    gulp.watch(['./src/common/*'], gulp.series('js'));
-
-    gulp.watch('./src/pugs/**/*', gulp.series('pug')); 
-
-    gulp.watch('./src/**/*', gulp.series('imgs')); 
-    gulp.watch('./src/*', gulp.series('imgs')); 
-
-    gulp.watch(['/src/pugs/common/images/*'], gulp.series('cp-assets-folder'));
-
+    gulp.watch('./src/pugs/**/*', gulp.series('sass')); 
+    gulp.watch(['./src/pugs/common/*'], gulp.series('eslint','js')); 
+    gulp.watch('./src/pugs/**/*', gulp.series('pug'));  
+    gulp.watch('./src/pugs/*', gulp.series('imgs'));  
+    gulp.watch(['/src/pugs/common/images/*'], gulp.series('cp-assets-folder')); 
     gulp.watch('./dev/**/*').on('change', browserSync.reload);
+    
 }));
 
 // Default task - run the `gulp serve` when type only `gulp`

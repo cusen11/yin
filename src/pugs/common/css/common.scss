@@ -1,0 +1,20 @@
+*{
+    margin: 0;
+    padding:0;
+    box-sizing: border-box;
+}
+body{
+    font-size: 12px;
+    font-family: 'Courier New', Courier, monospace;
+}
+[class*=flexbw]{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;   
+}
+[class*=flexstart]{
+    display: flex;
+    justify-content: flex-start;
+    align-items: center ;
+} 
+
